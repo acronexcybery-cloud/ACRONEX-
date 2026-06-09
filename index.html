@@ -162,20 +162,38 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
 
+        .section-title {
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            font-size: 2.4rem;
+            margin-bottom: 40px;
+            color: var(--text-dark);
+            letter-spacing: 3px;
+        }
+        
+        .section-title::after {
+            content: '∼';
+            display: block;
+            font-size: 1.5rem;
+            margin-top: 10px;
+            opacity: 0.4;
+        }
+
+        /* --- IDENTIDAD / QUIÉNES SOMOS --- */
         .identity-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 40px;
-            padding: 100px 10%;
+            gap: 30px;
+            padding: 60px 10% 40px;
             justify-content: center;
             background: rgba(255,255,255,0.3);
         }
 
         .identity-card {
             flex: 1;
-            min-width: 320px;
+            min-width: 280px;
             background: #ffffff;
-            padding: 50px 40px;
+            padding: 40px 30px;
             border-radius: 20px;
             border: 1px solid var(--border-dark);
             text-align: center;
@@ -199,29 +217,13 @@
             font-family: 'Cinzel', serif;
             color: var(--text-dark);
             margin-bottom: 20px;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             letter-spacing: 2px;
         }
 
+        /* --- QUÉ OFRECEMOS --- */
         .catalog-section {
             padding: 100px 10%;
-        }
-
-        .section-title {
-            text-align: center;
-            font-family: 'Cinzel', serif;
-            font-size: 2.4rem;
-            margin-bottom: 60px;
-            color: var(--text-dark);
-            letter-spacing: 3px;
-        }
-        
-        .section-title::after {
-            content: '∼';
-            display: block;
-            font-size: 1.5rem;
-            margin-top: 10px;
-            opacity: 0.4;
         }
 
         .catalog-grid {
@@ -261,7 +263,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            padding: 0 10% 100px 10%;
+            padding: 0 10% 60px 10%;
         }
 
         .fancy-card {
@@ -310,6 +312,7 @@
             margin-top: 35px;
             display: flex;
             justify-content: center;
+            flex-wrap: wrap;
             gap: 30px;
             font-weight: 600;
             text-transform: uppercase;
@@ -321,13 +324,31 @@
             margin-right: 5px;
         }
 
+        /* --- FORMULARIO FORMAL DE COTIZACIÓN --- */
         .quote-wrapper {
-            max-width: 700px;
-            margin: 0 auto 100px auto;
+            max-width: 800px;
+            margin: 0 auto;
             background: #ffffff;
             padding: 50px 40px;
             border-radius: 20px;
             border: 1px solid var(--border-dark);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 30px;
+        }
+
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 25px;
         }
 
         .quote-wrapper label {
@@ -337,23 +358,30 @@
             text-transform: uppercase;
             font-size: 0.85rem;
             letter-spacing: 1px;
+            color: var(--text-muted);
         }
 
-        input, select {
+        input, select, textarea {
             width: 100%;
             background: var(--bg-main);
             border: 1px solid var(--border-dark);
             padding: 15px;
             border-radius: 10px;
             color: var(--text-dark);
-            margin-bottom: 30px;
             outline: none;
             font-family: inherit;
             font-size: 1rem;
+            transition: var(--transition);
         }
 
-        input:focus, select:focus {
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        input:focus, select:focus, textarea:focus {
             border-color: var(--text-dark);
+            background: #ffffff;
         }
 
         .total-pill {
@@ -364,7 +392,7 @@
             text-align: center;
             font-family: 'Cinzel', serif;
             font-size: 1.6rem;
-            margin-bottom: 30px;
+            margin: 30px 0;
         }
 
         .btn-whatsapp {
@@ -387,9 +415,49 @@
             transform: translateY(-2px);
         }
 
+        /* --- REDES SOCIALES --- */
+        .social-section {
+            background: #ffffff;
+            padding: 80px 10%;
+            text-align: center;
+            border-top: 1px solid var(--border-dark);
+            border-bottom: 1px solid var(--border-dark);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            font-size: 3rem;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        .contact-info {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .contact-info p {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
         /* --- EQUIPO / TARJETAS DE PRESENTACIÓN --- */
         .team-section {
-            padding: 0 10% 100px 10%;
+            padding: 100px 10%;
         }
 
         .cards-container {
@@ -475,14 +543,14 @@
         .reveal.active { opacity: 1; transform: translateY(0); }
 
         footer {
-            padding: 80px 20px;
+            padding: 60px 20px 40px;
             text-align: center;
             background: #111111;
             color: #ffffff;
         }
 
         .footer-socials {
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         .social-icon {
@@ -499,8 +567,10 @@
 
         footer p {
             font-size: 0.9rem;
-            opacity: 0.5;
+            opacity: 0.7;
+            margin-bottom: 10px;
         }
+
     </style>
 </head>
 <body>
@@ -510,11 +580,11 @@
             <span class="brand-name">ACRONEX</span>
         </div>
         <ul class="nav-links">
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#identidad">Identidad</a></li>
-            <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#valores">Valores</a></li>
-            <li><a href="#cotizar">Cotizar</a></li>
+            <li><a href="#quienes-somos">Quiénes Somos</a></li>
+            <li><a href="#que-ofrecemos">Qué Ofrecemos</a></li>
+            <li><a href="#redes-sociales">Redes Sociales</a></li>
+            <li><a href="#equipo">Equipo</a></li>
+            <li><a href="#normatividad">Normatividad</a></li>
         </ul>
     </nav>
 
@@ -524,25 +594,68 @@
             <span class="ornament">ACRONEX</span>
         </div>
         <p>Infraestructura de Clase Mundial & Conectividad Superior</p>
-        <a href="#cotizar" class="btn-explore">Explorar Soluciones</a>
+        <a href="#que-ofrecemos" class="btn-explore">Explorar Soluciones</a>
     </section>
 
-    <section id="identidad" class="identity-container reveal">
-        <div class="identity-card">
-            <i class="fas fa-bullseye"></i>
-            <h2>Misión</h2>
-            <p>Proveer soluciones de conectividad de vanguardia que impulsen el desarrollo digital de nuestros clientes, garantizando una infraestructura robusta, segura y de alta velocidad.</p>
+    <!-- 1. ¿QUIÉNES SOMOS? -->
+    <section id="quienes-somos" style="padding-top: 100px;">
+        <h2 class="section-title">¿Quiénes Somos?</h2>
+        
+        <div class="identity-container reveal">
+            <div class="identity-card">
+                <i class="fas fa-bullseye"></i>
+                <h2>Misión</h2>
+                <p>Proveer soluciones de conectividad de vanguardia que impulsen el desarrollo digital de nuestros clientes, garantizando una infraestructura robusta, segura y de alta velocidad.</p>
+            </div>
+            <div class="identity-card">
+                <i class="fas fa-eye"></i>
+                <h2>Visión</h2>
+                <p>Ser el referente líder en telecomunicaciones e infraestructura de red, conectando comunidades con tecnología inteligente y redefiniendo los estándares globales.</p>
+            </div>
+            <div class="identity-card">
+                <i class="fas fa-file-contract"></i>
+                <h2>Política</h2>
+                <p>Mantenemos estrictos estándares de calidad, seguridad y cumplimiento, asegurando la integridad de cada proyecto y la protección total de los datos de nuestros clientes.</p>
+            </div>
         </div>
-        <div class="identity-card">
-            <i class="fas fa-eye"></i>
-            <h2>Visión</h2>
-            <p>Ser el referente líder en telecomunicaciones e infraestructura de red, conectando comunidades con tecnología inteligente y redefiniendo los estándares de estabilidad global.</p>
+
+        <div class="reveal">
+            <h2 class="section-title" style="margin-top: 40px; font-size: 2rem;">Nuestros Valores</h2>
+            <div class="grid-container">
+                <div class="fancy-card">
+                    <i class="fas fa-microchip"></i>
+                    <h3>Innovación Constante</h3>
+                    <p>Lideramos la evolución tecnológica implementando las arquitecturas de red más eficientes del mercado.</p>
+                </div>
+                <div class="fancy-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Integridad Absoluta</h3>
+                    <p>Transparencia total en cada solución y un compromiso inquebrantable con la privacidad de tu información.</p>
+                </div>
+                <div class="fancy-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Agilidad Operativa</h3>
+                    <p>Respuesta inmediata y tiempos de implementación optimizados para mantener tu negocio siempre activo.</p>
+                </div>
+            </div>
+
+            <div class="quality-box reveal">
+                <h2>Compromiso de Calidad</h2>
+                <p>Nuestra infraestructura cumple con los estándares internacionales más exigentes, garantizando un SLA del 99.99% en todos nuestros servicios empresariales.</p>
+                <div class="quality-badges">
+                    <span><i class="fas fa-check-circle"></i> ISO 27001</span>
+                    <span><i class="fas fa-check-circle"></i> ISO 9001</span>
+                    <span><i class="fas fa-check-circle"></i> TIER III</span>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="servicios" class="catalog-section reveal">
-        <h2 class="section-title">Catálogo de Servicios</h2>
-        <div class="catalog-grid">
+    <!-- 2. ¿QUÉ OFRECEMOS? -->
+    <section id="que-ofrecemos" class="catalog-section reveal">
+        <h2 class="section-title">¿Qué Ofrecemos?</h2>
+        
+        <div class="catalog-grid" style="margin-bottom: 80px;">
             <div class="catalog-item">
                 <i class="fas fa-wifi"></i>
                 <h3>Internet Simétrico</h3>
@@ -564,68 +677,89 @@
                 <p>Sistemas avanzados de conectividad dedicados para garantizar la continuidad total de tu operación.</p>
             </div>
         </div>
-    </section>
 
-    <section id="valores" class="reveal">
-        <h2 class="section-title">Nuestros Valores</h2>
-        <div class="grid-container">
-            <div class="fancy-card">
-                <i class="fas fa-microchip"></i>
-                <h3>Innovación Constante</h3>
-                <p>Lideramos la evolución tecnológica implementando las arquitecturas de red más eficientes del mercado.</p>
-            </div>
-            <div class="fancy-card">
-                <i class="fas fa-handshake"></i>
-                <h3>Integridad Absoluta</h3>
-                <p>Transparencia total en cada solución y un compromiso inquebrantable con la privacidad de tu información.</p>
-            </div>
-            <div class="fancy-card">
-                <i class="fas fa-bolt"></i>
-                <h3>Agilidad Operativa</h3>
-                <p>Respuesta inmediata y tiempos de implementación optimizados para mantener tu negocio siempre activo.</p>
-            </div>
+        <h2 class="section-title" style="font-size: 2rem;">Nuestro Trabajo en Acción</h2>
+        <div class="video-grid" style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 80px;">
+            <iframe src="https://drive.google.com/file/d/1V0Q6MpC05WH_quslmf3IK2xvZi4HgvWt/preview" width="340" height="240" allow="autoplay" style="border: 1px solid var(--border-dark); border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.05);"></iframe>
+            <iframe src="https://drive.google.com/file/d/1NQuY1B-XySOET0ivhd23-0bNFT9rY61C/preview" width="340" height="240" allow="autoplay" style="border: 1px solid var(--border-dark); border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.05);"></iframe>
+            <iframe src="https://drive.google.com/file/d/1LJlDdSrEBY2Wj9PIiZ-ocPDqZ2JqQw1v/preview" width="340" height="240" allow="autoplay" style="border: 1px solid var(--border-dark); border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.05);"></iframe>
         </div>
 
-        <div class="quality-box reveal">
-            <h2>Compromiso de Calidad</h2>
-            <p>Nuestra infraestructura cumple con los estándares internacionales más exigentes, garantizando un SLA del 99.99% en todos nuestros servicios empresariales.</p>
-            <div class="quality-badges">
-                <span><i class="fas fa-check-circle"></i> ISO 27001</span>
-                <span><i class="fas fa-check-circle"></i> ISO 9001</span>
-                <span><i class="fas fa-check-circle"></i> TIER III</span>
-            </div>
-        </div>
-    </section>
-
-    <section id="cotizar" class="reveal">
-        <h2 class="section-title">Cotizador Inteligente</h2>
+        <h2 class="section-title" style="font-size: 2rem;">Cotización Formal de Servicio</h2>
         <div class="quote-wrapper">
-            <label>Tipo de Servicio</label>
-            <select id="serviceType">
-                <option value="0">Selecciona un servicio...</option>
-                <option value="1500">Internet Simétrico Empresarial</option>
-                <option value="2500">Ciberseguridad Avanzada</option>
-                <option value="3000">Infraestructura Mesh</option>
-                <option value="4000">Enlace Dedicado</option>
-            </select>
+            <p style="text-align: center; margin-bottom: 30px; color: var(--text-muted);">Por favor, complete el siguiente formulario corporativo para brindarle una propuesta personalizada.</p>
+            
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Nombre Completo *</label>
+                    <input type="text" id="clientName" placeholder="Ej. Juan Pérez" required>
+                </div>
+                <div class="form-group">
+                    <label>Nombre de la Empresa *</label>
+                    <input type="text" id="companyName" placeholder="Ej. Tech Solutions S.A. de C.V." required>
+                </div>
+                <div class="form-group">
+                    <label>Correo Electrónico *</label>
+                    <input type="email" id="clientEmail" placeholder="ejemplo@empresa.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Teléfono de Contacto</label>
+                    <input type="tel" id="clientPhone" placeholder="10 dígitos">
+                </div>
+            </div>
 
-            <label>Velocidad / Escalamiento</label>
-            <select id="scale">
-                <option value="1">Básico</option>
-                <option value="1.5">Profesional (+50%)</option>
-                <option value="2.5">Empresarial (+150%)</option>
-            </select>
+            <div class="form-group">
+                <label>Tipo de Servicio *</label>
+                <select id="serviceType">
+                    <option value="0">Selecciona un servicio...</option>
+                    <option value="1500">Internet Simétrico Empresarial</option>
+                    <option value="2500">Ciberseguridad Avanzada</option>
+                    <option value="3000">Infraestructura Mesh</option>
+                    <option value="4000">Enlace Dedicado</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Velocidad / Escalamiento *</label>
+                <select id="scale">
+                    <option value="1">Básico</option>
+                    <option value="1.5">Profesional (+50%)</option>
+                    <option value="2.5">Empresarial (+150%)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Requerimientos Adicionales</label>
+                <textarea id="additionalDetails" placeholder="Describa brevemente las necesidades específicas de su infraestructura o proyecto..."></textarea>
+            </div>
 
             <div class="total-pill">
                 Estimado Mensual: <span id="total">$0 MXN</span>
             </div>
 
             <button class="btn-whatsapp" onclick="sendQuote()">
-                <i class="fab fa-whatsapp"></i> Solicitar por WhatsApp
+                <i class="fab fa-whatsapp"></i> Enviar Solicitud por WhatsApp
             </button>
         </div>
     </section>
 
+    <!-- 3. ENLACES DE REDES SOCIALES -->
+    <section id="redes-sociales" class="social-section reveal">
+        <h2 class="section-title">Conecta con Nosotros</h2>
+        
+        <div class="social-links">
+            <a href="https://www.instagram.com/acronex_cyberty___?igsh=MW1uazhsaDQ3d3JtcQ==" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/1HD9K5szD3/" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.tiktok.com/@acronex_cyberty?_r=1&_t=ZS-973MypDBws1" target="_blank"><i class="fab fa-tiktok"></i></a>
+        </div>
+
+        <div class="contact-info">
+            <p><i class="fas fa-envelope"></i> acronexcyberty@gmail.com</p>
+            <p><i class="fas fa-phone-alt"></i> +52 55 1688 6829</p>
+        </div>
+    </section>
+
+    <!-- 4. NUESTRO EQUIPO -->
     <section id="equipo" class="team-section reveal">
         <h2 class="section-title">Nuestro Equipo</h2>
         <div class="cards-container">
@@ -655,16 +789,33 @@
         </div>
     </section>
 
-    <footer>
-        <div class="footer-socials">
-            <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+    <!-- 5. NORMATIVIDAD Y FORMATO DE ENTREGA -->
+    <section id="normatividad" class="reveal" style="padding: 0 10% 100px 10%;">
+        <h2 class="section-title"> Documento Normatividad </h2>
+        
+        <div style="max-width: 900px; margin: 0 auto; height: 700px; border-radius: 15px; overflow: hidden; border: 1px solid var(--border-dark); box-shadow: 0 15px 30px rgba(0,0,0,0.05);">
+            <iframe src="https://drive.google.com/file/d/1LJlDdSrEBY2Wj9PIiZ-ocPDqZ2JqQw1v/preview" width="100%" height="100%" allow="autoplay" style="border: none;"></iframe>
         </div>
+    </section>
+
+    <!-- 6. PIE DE PÁGINA (Footer) -->
+    <footer>
+        <p style="font-weight: 600; font-size: 1.1rem; color: #fff; margin-bottom: 20px;">
+            <i class="fas fa-envelope"></i> acronexcyberty@gmail.com &nbsp;|&nbsp; <i class="fas fa-phone-alt"></i> 55 1688 6829
+        </p>
+
+        <div class="footer-socials">
+            <a href="https://www.facebook.com/share/1HD9K5szD3/" class="social-icon" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/acronex_cyberty___?igsh=MW1uazhsaDQ3d3JtcQ==" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@acronex_cyberty?_r=1&_t=ZS-973MypDBws1" class="social-icon" target="_blank"><i class="fab fa-tiktok"></i></a>
+        </div>
+        
         <p>&copy; 2026 ACRONEX. Todos los derechos reservados.</p>
+        <p>Infraestructura de red y telecomunicaciones.</p>
     </footer>
 
     <script>
+        // Animaciones de revelado al hacer scroll
         const reveals = document.querySelectorAll('.reveal');
         function reveal() {
             reveals.forEach(el => {
@@ -675,6 +826,7 @@
         window.addEventListener('scroll', reveal);
         window.addEventListener('load', reveal);
 
+        // Lógica del cotizador
         const serviceType = document.getElementById('serviceType');
         const scale = document.getElementById('scale');
         const totalDisplay = document.getElementById('total');
@@ -690,14 +842,47 @@
         scale.addEventListener('change', calculateTotal);
 
         function sendQuote() {
+            // Recolectar datos del cliente
+            const name = document.getElementById('clientName').value.trim();
+            const company = document.getElementById('companyName').value.trim();
+            const email = document.getElementById('clientEmail').value.trim();
+            const phone = document.getElementById('clientPhone').value.trim();
+            const details = document.getElementById('additionalDetails').value.trim();
+
             const service = serviceType.options[serviceType.selectedIndex].text;
             const total = totalDisplay.textContent;
-            if (service.includes('Selecciona')) {
-                alert('Por favor selecciona un servicio primero.');
+            
+            // Validaciones
+            if (!name || !company || !email) {
+                alert('Por favor, complete los campos obligatorios: Nombre, Empresa y Correo Electrónico.');
                 return;
             }
-            const message = `Hola ACRONEX, me interesa cotizar: ${service}. Estimado mensual: ${total}`;
-            window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, '_blank');
+
+            if (service.includes('Selecciona')) {
+                alert('Por favor, seleccione un tipo de servicio.');
+                return;
+            }
+            
+            // Construir el mensaje formal para WhatsApp
+            let message = `*NUEVA SOLICITUD DE COTIZACIÓN - ACRONEX*%0A%0A`;
+            message += `*Datos del Cliente:*%0A`;
+            message += `- Nombre: ${name}%0A`;
+            message += `- Empresa: ${company}%0A`;
+            message += `- Correo: ${email}%0A`;
+            if (phone) message += `- Teléfono: ${phone}%0A`;
+            
+            message += `%0A*Detalles del Servicio:*%0A`;
+            message += `- Servicio de interés: ${service}%0A`;
+            message += `- Estimado mensual: ${total}%0A`;
+            
+            if (details) {
+                message += `%0A*Requerimientos Adicionales:*%0A${details}%0A`;
+            }
+            
+            message += `%0AQuedo a la espera de más información.`;
+            
+            // Abrir WhatsApp con el mensaje pre-llenado
+            window.open(`https://wa.me/525516886829?text=${message}`, '_blank');
         }
     </script>
 
