@@ -324,13 +324,31 @@
             margin-right: 5px;
         }
 
+        /* --- FORMULARIO FORMAL DE COTIZACIÓN --- */
         .quote-wrapper {
-            max-width: 700px;
+            max-width: 800px;
             margin: 0 auto;
             background: #ffffff;
             padding: 50px 40px;
             border-radius: 20px;
             border: 1px solid var(--border-dark);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 30px;
+        }
+
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 25px;
         }
 
         .quote-wrapper label {
@@ -340,23 +358,30 @@
             text-transform: uppercase;
             font-size: 0.85rem;
             letter-spacing: 1px;
+            color: var(--text-muted);
         }
 
-        input, select {
+        input, select, textarea {
             width: 100%;
             background: var(--bg-main);
             border: 1px solid var(--border-dark);
             padding: 15px;
             border-radius: 10px;
             color: var(--text-dark);
-            margin-bottom: 30px;
             outline: none;
             font-family: inherit;
             font-size: 1rem;
+            transition: var(--transition);
         }
 
-        input:focus, select:focus {
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        input:focus, select:focus, textarea:focus {
             border-color: var(--text-dark);
+            background: #ffffff;
         }
 
         .total-pill {
@@ -367,7 +392,7 @@
             text-align: center;
             font-family: 'Cinzel', serif;
             font-size: 1.6rem;
-            margin-bottom: 30px;
+            margin: 30px 0;
         }
 
         .btn-whatsapp {
@@ -572,7 +597,7 @@
         <a href="#que-ofrecemos" class="btn-explore">Explorar Soluciones</a>
     </section>
 
-    <!-- 1. ¿QUIÉNES SOMOS? (Misión, Visión, Política, Valores) -->
+    <!-- 1. ¿QUIÉNES SOMOS? -->
     <section id="quienes-somos" style="padding-top: 100px;">
         <h2 class="section-title">¿Quiénes Somos?</h2>
         
@@ -626,7 +651,7 @@
         </div>
     </section>
 
-    <!-- 2. ¿QUÉ OFRECEMOS? (Servicios, Videos, Cotización) -->
+    <!-- 2. ¿QUÉ OFRECEMOS? -->
     <section id="que-ofrecemos" class="catalog-section reveal">
         <h2 class="section-title">¿Qué Ofrecemos?</h2>
         
@@ -655,36 +680,64 @@
 
         <h2 class="section-title" style="font-size: 2rem;">Nuestro Trabajo en Acción</h2>
         <div class="video-grid" style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 80px;">
-            <!-- Videos embebidos sin mandar a Drive -->
             <iframe src="https://drive.google.com/file/d/1V0Q6MpC05WH_quslmf3IK2xvZi4HgvWt/preview" width="340" height="240" allow="autoplay" style="border: 1px solid var(--border-dark); border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.05);"></iframe>
             <iframe src="https://drive.google.com/file/d/1NQuY1B-XySOET0ivhd23-0bNFT9rY61C/preview" width="340" height="240" allow="autoplay" style="border: 1px solid var(--border-dark); border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.05);"></iframe>
-           
-        </div>
+                   </div>
 
         <h2 class="section-title" style="font-size: 2rem;">Cotización Formal de Servicio</h2>
         <div class="quote-wrapper">
-            <label>Tipo de Servicio</label>
-            <select id="serviceType">
-                <option value="0">Selecciona un servicio...</option>
-                <option value="1500">Internet Simétrico Empresarial</option>
-                <option value="2500">Ciberseguridad Avanzada</option>
-                <option value="3000">Infraestructura Mesh</option>
-                <option value="4000">Enlace Dedicado</option>
-            </select>
+            <p style="text-align: center; margin-bottom: 30px; color: var(--text-muted);">Por favor, complete el siguiente formulario corporativo para brindarle una propuesta personalizada.</p>
+            
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Nombre Completo *</label>
+                    <input type="text" id="clientName" placeholder="Ej. Juan Pérez" required>
+                </div>
+                <div class="form-group">
+                    <label>Nombre de la Empresa *</label>
+                    <input type="text" id="companyName" placeholder="Ej. Tech Solutions S.A. de C.V." required>
+                </div>
+                <div class="form-group">
+                    <label>Correo Electrónico *</label>
+                    <input type="email" id="clientEmail" placeholder="ejemplo@empresa.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Teléfono de Contacto</label>
+                    <input type="tel" id="clientPhone" placeholder="10 dígitos">
+                </div>
+            </div>
 
-            <label>Velocidad / Escalamiento</label>
-            <select id="scale">
-                <option value="1">Básico</option>
-                <option value="1.5">Profesional (+50%)</option>
-                <option value="2.5">Empresarial (+150%)</option>
-            </select>
+            <div class="form-group">
+                <label>Tipo de Servicio *</label>
+                <select id="serviceType">
+                    <option value="0">Selecciona un servicio...</option>
+                    <option value="1500">Internet Simétrico Empresarial</option>
+                    <option value="2500">Ciberseguridad Avanzada</option>
+                    <option value="3000">Infraestructura Mesh</option>
+                    <option value="4000">Enlace Dedicado</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Velocidad / Escalamiento *</label>
+                <select id="scale">
+                    <option value="1">Básico</option>
+                    <option value="1.5">Profesional (+50%)</option>
+                    <option value="2.5">Empresarial (+150%)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Requerimientos Adicionales</label>
+                <textarea id="additionalDetails" placeholder="Describa brevemente las necesidades específicas de su infraestructura o proyecto..."></textarea>
+            </div>
 
             <div class="total-pill">
                 Estimado Mensual: <span id="total">$0 MXN</span>
             </div>
 
             <button class="btn-whatsapp" onclick="sendQuote()">
-                <i class="fab fa-whatsapp"></i> Solicitar Cotización por WhatsApp
+                <i class="fab fa-whatsapp"></i> Enviar Solicitud por WhatsApp
             </button>
         </div>
     </section>
@@ -739,7 +792,6 @@
     <section id="normatividad" class="reveal" style="padding: 0 10% 100px 10%;">
         <h2 class="section-title">Normatividad y Formato de Entrega</h2>
         
-        <!-- Documento embebido sin mandar a Drive -->
         <div style="max-width: 900px; margin: 0 auto; height: 700px; border-radius: 15px; overflow: hidden; border: 1px solid var(--border-dark); box-shadow: 0 15px 30px rgba(0,0,0,0.05);">
             <iframe src="https://drive.google.com/file/d/1LJlDdSrEBY2Wj9PIiZ-ocPDqZ2JqQw1v/preview" width="100%" height="100%" allow="autoplay" style="border: none;"></iframe>
         </div>
@@ -789,18 +841,47 @@
         scale.addEventListener('change', calculateTotal);
 
         function sendQuote() {
+            // Recolectar datos del cliente
+            const name = document.getElementById('clientName').value.trim();
+            const company = document.getElementById('companyName').value.trim();
+            const email = document.getElementById('clientEmail').value.trim();
+            const phone = document.getElementById('clientPhone').value.trim();
+            const details = document.getElementById('additionalDetails').value.trim();
+
             const service = serviceType.options[serviceType.selectedIndex].text;
             const total = totalDisplay.textContent;
             
+            // Validaciones
+            if (!name || !company || !email) {
+                alert('Por favor, complete los campos obligatorios: Nombre, Empresa y Correo Electrónico.');
+                return;
+            }
+
             if (service.includes('Selecciona')) {
-                alert('Por favor selecciona un servicio primero.');
+                alert('Por favor, seleccione un tipo de servicio.');
                 return;
             }
             
-            const message = `Hola ACRONEX, me interesa cotizar formalmente su servicio de: ${service}. El estimado mensual en su página es de ${total}. Me gustaría recibir más información.`;
+            // Construir el mensaje formal para WhatsApp
+            let message = `*NUEVA SOLICITUD DE COTIZACIÓN - ACRONEX*%0A%0A`;
+            message += `*Datos del Cliente:*%0A`;
+            message += `- Nombre: ${name}%0A`;
+            message += `- Empresa: ${company}%0A`;
+            message += `- Correo: ${email}%0A`;
+            if (phone) message += `- Teléfono: ${phone}%0A`;
             
-            // Vinculación formal a WhatsApp con el número proporcionado
-            window.open(`https://wa.me/525516886829?text=${encodeURIComponent(message)}`, '_blank');
+            message += `%0A*Detalles del Servicio:*%0A`;
+            message += `- Servicio de interés: ${service}%0A`;
+            message += `- Estimado mensual: ${total}%0A`;
+            
+            if (details) {
+                message += `%0A*Requerimientos Adicionales:*%0A${details}%0A`;
+            }
+            
+            message += `%0AQuedo a la espera de más información.`;
+            
+            // Abrir WhatsApp con el mensaje pre-llenado
+            window.open(`https://wa.me/525516886829?text=${message}`, '_blank');
         }
     </script>
 
